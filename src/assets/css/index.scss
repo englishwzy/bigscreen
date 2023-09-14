@@ -1,0 +1,15 @@
+//全局样式书写
+@import "./reset.scss";
+// 滚动条外观设置 ---暂时无效
+::webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: $side-bgc;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background-color: yellow;
+}
