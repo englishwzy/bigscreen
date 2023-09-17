@@ -8,6 +8,7 @@ export default [
       breadHidden:true,
     },
     hidden: false,
+    icon:"house",
     children: [
       {
         path: "/home",
@@ -27,6 +28,7 @@ export default [
       title: "数据大屏",
     },
     hidden: false,
+    icon:"Monitor"
   },
   {
     path: "/acl",
@@ -36,6 +38,7 @@ export default [
     meta: {
       title: "权限管理",
     },
+    icon:"Lock",
     children: [
       {
         path: "/acl/user",

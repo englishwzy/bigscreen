@@ -5,10 +5,13 @@ const useMenu = defineStore("Menu",{
     state:():RouteState=>{
         return {
             menuRoutes:Routes,
+            collapse:false,
         };  
     },
     actions:{
-
+        modifyCollapse(flag:boolean) {
+            this.collapse = flag;
+        }
     }
 })
 

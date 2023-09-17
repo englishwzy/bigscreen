@@ -1,14 +1,37 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
+import useMenu from "@/store/menu"
 const $route = useRoute(); 
+const MenuState = useMenu();
 console.log($route.matched);
 
+// 是否缩小
+const handleCollapse = ()=>{
+  console.log(MenuState.collapse);
+  MenuState.modifyCollapse(!MenuState.collapse);
+  // MenuState.collapse = !MenuState.collapse;
+}
+
+
+
+// 原生的全屏
+const handleFullscreen = ()=>{
+  let full = document.fullscreenElement;
+  if(!full) {
+    // 进入全屏状态
+    document.documentElement.requestFullscreen();
+  }else {
+    // 退出全屏状态
+    document.exitFullscreen();
+  }
+  
+}
 </script>
 
 <template>
-  <div class="topbar">
-    <div class="topbar-left">
-      <div class="icon">
+ 
+    <div class="topbar-left" >
+      <div class="icon" @click="handleCollapse" style="cursor: pointer;">
         <el-icon>
           <Fold></Fold>
         </el-icon>
@@ -22,7 +45,7 @@ console.log($route.matched);
       <div class="topbar-btn">
         <el-button icon="Edit" circle />
         <el-button icon="Check" circle />
-        <el-button icon="Message" circle />
+        <el-button icon="FullScreen" circle  @click="handleFullscreen"/>
       </div>
       <div class="topbar-dropdown">
         <el-dropdown>
@@ -43,14 +66,9 @@ console.log($route.matched);
         </el-dropdown>
       </div>
     </div>
-  </div>
 </template>
 
-<style scoped>
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+<style scoped lang="scss">
   .topbar-left {
     display: flex;
     .icon {
@@ -67,5 +85,4 @@ console.log($route.matched);
     .dropdown {
     }
   }
-}
 </style>
