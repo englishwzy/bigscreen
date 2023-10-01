@@ -7,6 +7,9 @@ import ratioEchart from "@/components/echarts/radio.vue"
 import agePie from '@/components/echarts/agePie.vue'
 import Mymap from "@/components/echarts/map.vue"
 import lineTrend from "@/components/echarts/lineTrend.vue";
+import barLine from "@/components/echarts/right-top.vue"
+import scatter from "@/components/echarts/scatter.vue"
+import radar from "@/components/echarts/radar.vue"
 let box = ref();
 onMounted(() => {
   box.value.style.transform = `scale(${getScale()}) translate(-50%,-50%)`;
@@ -38,7 +41,17 @@ window.onresize = () => {
             <lineTrend/>
           </div>
         </div>
-        <div class="right"></div>
+        <div class="right">
+          <div class="right-top">
+            <barLine/>
+          </div>
+          <div class="right-middle">
+            <scatter/>
+          </div>
+          <div class="right-footer">
+            <radar/>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -89,8 +102,32 @@ window.onresize = () => {
         
       }
       .right {
+        margin-top: 20px;
         flex: 1;
-        background-color: blue;
+        // background-color: blue;
+        display: flex;
+        flex-direction: column;
+        .right-top {
+          flex:1;
+          background-color: #fff;
+          background: url(../assets/images_screen/dataScreen-main-rb.png) no-repeat;
+          background-size: 100% 100%;
+          margin-bottom: 20px;
+        }
+        .right-middle {
+          flex:1;
+          background-color: pink;
+          background: url(../assets/images_screen/dataScreen-main-rb.png) no-repeat;
+          background-size: 100% 100%;
+          margin-bottom: 20px;
+        }
+        .right-footer {
+          flex:1;
+          background-color:yellow;
+          background: url(../assets/images_screen/dataScreen-main-rb.png) no-repeat;
+          background-size: 100% 100%;
+
+        }
       }
     }
   }
