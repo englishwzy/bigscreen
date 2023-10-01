@@ -6,6 +6,7 @@ const useMenu = defineStore("Menu",{
         return {
             menuRoutes:Routes,
             collapse:false,
+            refresh:true,
         };  
     },
     actions:{

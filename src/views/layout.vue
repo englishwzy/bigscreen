@@ -2,9 +2,20 @@
 import useMenu from "@/store/menu";
 import topbar from "./topbar/index.vue";
 import { useRoute } from "vue-router";
+import {watch,ref,nextTick} from "vue"
 const $route = useRoute();
 const MenuStore = useMenu();
 console.log(MenuStore.menuRoutes);
+
+let flag = ref(true);
+
+watch(()=>MenuStore.refresh, (newVal, oldVal) => {
+      flag.value = false;
+      nextTick(()=>{
+        flag.value = true;
+      })
+      console.log(`New: ${newVal}, Old: ${oldVal}`)
+})
 </script>
 
 <template>
@@ -33,7 +44,7 @@ console.log(MenuStore.menuRoutes);
       </div>
       <div class="content">
         <div class="main">
-          <router-view></router-view>
+          <router-view v-if="flag"></router-view>
         </div>
       </div>
     </div>

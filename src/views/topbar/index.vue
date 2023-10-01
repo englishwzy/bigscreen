@@ -5,6 +5,13 @@ const $route = useRoute();
 const MenuState = useMenu();
 console.log($route.matched);
 
+
+
+// 处理刷新
+const handleRefresh = ()=>{
+  MenuState.refresh = !MenuState.refresh;
+}
+
 // 是否缩小
 const handleCollapse = ()=>{
   console.log(MenuState.collapse);
@@ -44,7 +51,7 @@ const handleFullscreen = ()=>{
     <div class="topbar-right">
       <div class="topbar-btn">
         <el-button icon="Edit" circle />
-        <el-button icon="Check" circle />
+        <el-button icon="Refresh" circle  @click="handleRefresh"/>
         <el-button icon="FullScreen" circle  @click="handleFullscreen"/>
       </div>
       <div class="topbar-dropdown">
